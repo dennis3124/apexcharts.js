@@ -192,8 +192,9 @@ export default class Position {
     if (w.config.tooltip.followCursor) {
       const elGrid = ttCtx.getElGrid()
       const seriesBound = elGrid.getBoundingClientRect()
+      const clientX = ttCtx.e.type === 'touchmove' ? ttCtx.e.changedTouches[0].clientX : ttCtx.e.clientX;
 
-      x = ttCtx.e.clientX - seriesBound.left
+      x = clientX - seriesBound.left
       if (x > w.globals.gridWidth / 2) {
         x = x - ttCtx.tooltipRect.ttWidth
       }
